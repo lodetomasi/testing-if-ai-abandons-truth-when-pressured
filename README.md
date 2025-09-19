@@ -4,7 +4,6 @@
 *Contact: lorenzo.detomasi@graduate.univaq.it*
 *University of L'Aquila*
 
-[![arXiv](https://img.shields.io/badge/arXiv-2024.XXXXX-b31b1b.svg)](https://arxiv.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
@@ -16,12 +15,12 @@ We present a comprehensive empirical study on the phenomenon of sycophancy in La
 
 The alignment tax hypothesis suggests that as we optimize models for helpfulness and harmlessness, we may inadvertently compromise their epistemic integrity. We formalize this trade-off through the sycophancy function:
 
-**S(θ, p, d) = α · I(Δ_answer) + β · Σ(φ_agreement) + γ · (1 - R(θ))**
+**S(θ, p, d) = α × I(Δ_answer) + β × Σ(φ_agreement) + γ × (1 - R(θ))**
 
 Where:
-- **θ** ∈ Θ: Model parameters
-- **p** ∈ P: Pressure level (p ∈ [0, 4])
-- **d** ∈ D: Knowledge domain
+- **θ ∈ Θ**: Model parameters
+- **p ∈ P**: Pressure level (p ∈ [0, 4])
+- **d ∈ D**: Knowledge domain
 - **I(·)**: Indicator function for answer change
 - **φ_agreement**: Agreement pattern detection score
 - **R(θ)**: Resistance coefficient
@@ -41,12 +40,12 @@ We design a controlled experimental protocol Π = ⟨Q, C, T, E⟩ where:
 
 The pressure applied at level ℓ follows an exponential escalation model:
 
-**P(ℓ) = P₀ · exp(λℓ) · M(ℓ)**
+**P(ℓ) = P₀ × exp(λℓ) × M(ℓ)**
 
 Where:
-- **P₀** = 1.0 (baseline pressure)
-- **λ** = 0.2 (escalation rate)
-- **M(ℓ)** ∈ {1.0, 1.2, 1.4, 1.5} (multiplier vector)
+- **P₀ = 1.0** (baseline pressure)
+- **λ = 0.2** (escalation rate)
+- **M(ℓ) ∈ {1.0, 1.2, 1.4, 1.5}** (multiplier vector)
 
 ### 2.3 Sycophancy Detection Algorithm
 
@@ -72,25 +71,25 @@ def compute_sycophancy_score(response, ground_truth, pressure_level):
 
 ### 3.1 Vulnerability Matrix
 
-We define the vulnerability matrix **V** ∈ ℝ^(|M| × |T|) where:
+We define the vulnerability matrix **V ∈ ℝ^(|M| × |T|)** where:
 
-**V[i,j] = E[S(θᵢ, pⱼ, d) | d ~ D]**
+**V[i,j] = 𝔼[S(θᵢ, pⱼ, d) | d ~ D]**
 
 This represents the expected sycophancy score for model i under tactic j, averaged across all domains.
 
 ### 3.2 Domain-Specific Susceptibility
 
-The susceptibility function Ψ: D × M → [0,1] is defined as:
+The susceptibility function **Ψ: D × M → [0,1]** is defined as:
 
-**Ψ(d, θ) = 1/|P| Σₚ∈P I(fθ(q, p) ≠ y*)**
+**Ψ(d, θ) = (1/|P|) × Σ_(p∈P) I(f_θ(q, p) ≠ y*)**
 
-Where y* is the ground truth and fθ is the model's response function.
+Where **y*** is the ground truth and **f_θ** is the model's response function.
 
 ### 3.3 Statistical Significance
 
 We employ bootstrap resampling with n=10,000 iterations to compute confidence intervals:
 
-**CI₉₅(S) = [S̄ - 1.96σ_S/√n, S̄ + 1.96σ_S/√n]**
+**CI₉₅(S) = [S̄ - 1.96×σ_S/√n, S̄ + 1.96×σ_S/√n]**
 
 ## 4. Results
 
@@ -119,7 +118,7 @@ Ranking by manipulation effectiveness:
 
 The χ² test for independence reveals significant domain effects:
 
-**χ²(20) = 48.3, p < 0.001, Cramér's V = 0.31**
+**χ²(20) = 48.3**, **p < 0.001**, **Cramér's V = 0.31**
 
 Mathematics and Science domains show disproportionate vulnerability (Cohen's d = 0.83).
 
@@ -129,7 +128,7 @@ Mathematics and Science domains show disproportionate vulnerability (Cohen's d =
 
 We model sycophancy as minimization of KL divergence from user preference:
 
-**L_sycophancy = KL(p_model || p_user) - λ · I(y, ŷ)**
+**L_sycophancy = KL(p_model || p_user) - λ × I(y, ŷ)**
 
 Where I(y, ŷ) is mutual information between true and predicted labels.
 
@@ -139,7 +138,7 @@ The interaction can be modeled as a Stackelberg game:
 - **Leader (Adversary)**: Choose pressure strategy p* ∈ P
 - **Follower (Model)**: Respond with r* = argmin L(r, p*)
 
-Nash equilibrium analysis reveals that truthful strategies are dominated when pressure exceeds threshold p_crit ≈ 2.3.
+Nash equilibrium analysis reveals that truthful strategies are dominated when pressure exceeds threshold **p_crit ≈ 2.3**.
 
 ## 6. Implementation
 
@@ -259,13 +258,13 @@ This research aims to improve AI safety. We acknowledge potential dual-use conce
 ## 12. Citation
 
 ```bibtex
-@inproceedings{detomasi2024sycophancy,
+@misc{detomasi2024sycophancy,
   title={Measuring Epistemic Integrity Under Adversarial Pressure:
          A Large-Scale Study of LLM Sycophancy},
   author={De Tomasi, Lorenzo},
-  booktitle={arXiv preprint},
   year={2024},
-  institution={University of L'Aquila}
+  institution={University of L'Aquila},
+  url={https://github.com/lodetomasi/testing-if-ai-abandons-truth-when-pressured}
 }
 ```
 
