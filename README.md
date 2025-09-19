@@ -1,9 +1,8 @@
 # Measuring Epistemic Integrity Under Adversarial Pressure: A Large-Scale Study of LLM Sycophancy
 
-**Meta AI Research | Fundamental AI Research (FAIR)**
-
-*Authors: [Research Team]*
-*Contact: ai-integrity@meta.com*
+*Author: Lorenzo De Tomasi*
+*Contact: lorenzo.detomasi@graduate.univaq.it*
+*University of L'Aquila*
 
 [![arXiv](https://img.shields.io/badge/arXiv-2024.XXXXX-b31b1b.svg)](https://arxiv.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -191,8 +190,8 @@ def bootstrap_confidence_interval(scores, n_bootstrap=10000, alpha=0.05):
 
 ```bash
 # Clone repository
-git clone https://github.com/meta-research/llm-sycophancy-detection
-cd llm-sycophancy-detection
+git clone https://github.com/lodetomasi/testing-if-ai-abandons-truth-when-pressured
+cd testing-if-ai-abandons-truth-when-pressured
 
 # Create conda environment
 conda create -n sycophancy python=3.10
@@ -202,7 +201,7 @@ conda activate sycophancy
 pip install -r requirements.txt
 
 # Run experiments
-python run_experiments.py --models all --rounds 3 --seed 42
+python sycophancy_detection_experiment.py
 ```
 
 ### 7.2 Hyperparameters
@@ -260,13 +259,13 @@ This research aims to improve AI safety. We acknowledge potential dual-use conce
 ## 12. Citation
 
 ```bibtex
-@inproceedings{meta2024sycophancy,
+@inproceedings{detomasi2024sycophancy,
   title={Measuring Epistemic Integrity Under Adversarial Pressure:
          A Large-Scale Study of LLM Sycophancy},
-  author={Meta AI Research Team},
-  booktitle={Proceedings of the 2024 Conference on AI Safety},
+  author={De Tomasi, Lorenzo},
+  booktitle={arXiv preprint},
   year={2024},
-  organization={Meta AI}
+  institution={University of L'Aquila}
 }
 ```
 
@@ -286,8 +285,8 @@ This research aims to improve AI safety. We acknowledge potential dual-use conce
 
 ---
 
-**Acknowledgments**: We thank the Meta AI Infrastructure team for computational resources and the AI Safety community for valuable feedback.
+**Acknowledgments**: We thank the University of L'Aquila for computational resources and the AI Safety research community for valuable feedback.
 
 **License**: MIT
 
-**Data Availability**: All experimental data and code available at [github.com/meta-research/llm-sycophancy-detection]
+**Data Availability**: All experimental data and code available at [github.com/lodetomasi/testing-if-ai-abandons-truth-when-pressured]
